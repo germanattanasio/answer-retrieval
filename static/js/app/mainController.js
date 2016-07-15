@@ -80,7 +80,7 @@
       if (parentBoxClass === '#box-solr') {
         $(box).find('.watson-icon').attr('src', 'static/images/solr.svg').addClass('solr-icon');
         $(box).find('img').attr('title', 'Solr Search ranker out of the box');
-        $(box).find('.circle').attr('title', 'This answer\'s rank position using default Solr search');
+        $(box).find('.circle').attr('title', 'Rank difference between Ranker and Solr results" should be the text');
       }
       if ($('#row' + rowIndex).find(parentBoxClass).find('.box').length == 0) {
         $('#row' + rowIndex).find(parentBoxClass).append(box);

@@ -1,0 +1,38 @@
+{
+  "name": "answer-retrieval",
+  "version": "0.5.0",
+  "description": "A sample Node.js web application that highlights the use of Retrieve and Rank and custom scorers",
+  "scripts": {
+    "build": "gulp",
+    "start": "python server.py",
+    "lint": "eslint .",
+    "autofix": "eslint --fix ."
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "eslint": "^3.0.1",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-iconfont": "^1.0.0",
+    "gulp-iconfont-css": "0.0.9",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.3.2",
+    "q": "^1.4.1",
+    "run-sequence": "^1.2.2",
+    "wrench": "^1.5.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/watson-developer-cloud/answer-retrieval.git"
+  },
+  "engines": {
+    "node": ">=4.x"
+  },
+  "author": "IBM Corp.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/watson-developer-cloud/answer-retrieval/issues"
+  }
+}

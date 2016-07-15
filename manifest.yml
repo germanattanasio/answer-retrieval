@@ -1,0 +1,11 @@
+declared-services:
+  retrieve-and-rank-service:
+    label: retrieve_and_rank
+    plan: standard
+applications:
+- name: answer-retrieval
+  command: python server.py
+  path: .
+  memory: 512M
+  services:
+  - retrieve-and-rank-service

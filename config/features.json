@@ -1,0 +1,12 @@
+{
+  "scorers": [{
+    "init_args": {
+      "name": "UpVoteScorer",
+      "short_name": "duvs1",
+      "description": "Score based on the number of up votes a document received"
+    },
+    "type": "document",
+    "module": "document_upvote_scorer",
+    "class": "UpVoteScorer"
+  }]
+}

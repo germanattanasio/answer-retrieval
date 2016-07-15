@@ -1,0 +1,13 @@
+.DS_Store
+.ipynb_checkpoints/
+node_modules
+*.pyc
+*.log
+venv
+ui
+gulp
+.github
+public
+bin
+notebooks
+package.json

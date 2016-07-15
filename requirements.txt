@@ -1,0 +1,14 @@
+# custom scorer dependencies
+requests==2.10.0
+spacy==0.101.0
+numpy==1.11.1
+futures>=3.0.5
+
+# web app
+flask==0.11.1
+python-dotenv
+watson-developer-cloud
+
+
+# custom scorer. See ./custom-scorer/README.md
+./custom-scorer/

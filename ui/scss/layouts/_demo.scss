@@ -1,0 +1,33 @@
+._demo{
+
+	&--container{
+
+		@include breakpoint(get('medium')) {
+			width: 760px;
+			margin: 0rem auto;
+		}
+
+		@include breakpoint(get('x-large')) {
+			width: 992px;
+			margin: 0rem auto;
+		}
+	}
+
+	&--heading{
+		background-color: #404041;
+		margin-top: 0;
+		padding-bottom: get('rhythm') / 2;
+		position: relative;
+		z-index: 1000;
+
+		@include breakpoint(get('heading nav inline breakpoint')) {
+			padding-bottom: 0;
+		}
+	}
+
+	&--banner {
+		margin-top: 0;
+		background-color: color('neutral-white', 30);
+		border-bottom: 2px solid color('neutral-white', 40);
+	}
+}

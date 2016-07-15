@@ -1,0 +1,9 @@
+@import 'extends';
+
+body {
+  @extend %body--typography;
+  @extend %body--block;
+
+  background: get('primary background color');
+  color: get('white');
+}

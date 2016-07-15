@@ -1,0 +1,53 @@
+.heading-nav {
+	margin-right: get('rhythm') / 4;
+	margin-top: 0;
+
+	@include breakpoint(get('heading nav inline breakpoint')){
+		float: right;
+		margin-right: get('rhythm') * 1.5;
+	}
+
+	&--li {
+		display: block;
+		margin-top: get('rhythm') / 2;
+
+		@include breakpoint(get('heading nav inline breakpoint')){
+			margin-top: 0rem;
+			display: inline-block;
+		}
+	}
+
+	&--item {
+		color: #c7c7c7;
+		text-decoration: none;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 300;
+
+		padding-left: 0.75em;
+		border-left: 0.25em solid transparent;
+
+		&:focus,
+		&:hover {
+			border-left-color: get('green');
+			color: #ffffff;
+		}
+
+		@include breakpoint(get('heading nav inline breakpoint')) {
+
+			margin-top: get('rhythm') * 0.75;
+			padding-bottom: get('rhythm') * 0.75;
+			padding-left: get('rhythm') / 4;
+			padding-right: get('rhythm') / 4;
+
+			border-left: 0;
+			border-bottom: 0.25em solid transparent;
+
+			&:focus,
+			&:hover{
+				border-left: 0;
+				border-bottom-color: get('green');
+			}
+		}
+	}
+}

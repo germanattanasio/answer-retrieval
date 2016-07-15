@@ -1,0 +1,22 @@
+._content{
+	padding: get('rhythm') get('rhythm') / 2;
+
+	@include breakpoint(get('tablet portrait')) {
+		padding: get('rhythm') 0rem;
+	}
+
+	&--example-section-1 {
+		margin-top: get('rhythm');
+
+		@include breakpoint(get('medium')) {
+			@include grid(6);
+		}
+	}
+
+	&--example-section-2 {
+
+		@include breakpoint(get('medium')) {
+			@include grid(6);
+		}
+	}
+}

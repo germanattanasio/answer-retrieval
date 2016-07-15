@@ -1,0 +1,14 @@
+.DS_Store
+data/experiments/
+notebooks/credentials.json
+notebooks/trainingdata.csv
+.ipynb_checkpoints/
+node_modules
+venv
+.env
+*.log
+*.csv
+*.whl
+*.pyc
+.idea/*
+.env

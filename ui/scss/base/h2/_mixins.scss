@@ -1,0 +1,5 @@
+@mixin base--h2 {
+  font-size: ms(5);
+  font-weight: get('bold weight font');
+  color: get('secondary color');
+}

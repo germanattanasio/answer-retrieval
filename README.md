@@ -1,4 +1,4 @@
-# Answer Retrieval [![Build Status](https://travis.innovate.ibm.com/watson-developer-cloud/answer-retrieval.svg?token=ouxuNEZVg24FqsCxcPYL)](https://travis.innovate.ibm.com/watson-developer-cloud/answer-retrieval)
+# Answer Retrieval [![Build Status](https://travis-ci.org/watson-developer-cloud/answer-retrieval.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/answer-retrieval)
 
 This repository contains a **Starter Kit** (SK) that is
 designed to show you how to create your own answer retrieval
@@ -17,7 +17,7 @@ training your answer retrieval system.
   - [How this app works](#how-this-app-works)
   - [Getting started](#getting-started)
   - [Running the notebooks](#running-the-notebooks)
-  - [Exploring with the UI](#exploring-with-the-UI)
+  - [Exploring with the UI](#exploring-with-the-ui)
   - [Using your own data](#using-your-own-data)
   - [Improving relevance](#improving-relevance)
 

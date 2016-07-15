@@ -107,14 +107,16 @@ in the **Config** section of the **Answer Retrieval** notebook.
 ### Installing dependencies for the application
 
 1. Install the dependencies using `pip`.
-    ```bash
+
+    ```sh
     pip install -r requirements.txt
     pip install -r notebooks/requirements.txt
     ```
 2. Create a `.env` using `.env.example` as example. You will need credentials for the Retrieve and Rank service.
 
 3. Start the application.
-    ```bash
+
+    ```sh
     python server.py
     ```
 

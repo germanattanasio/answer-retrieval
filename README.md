@@ -128,7 +128,7 @@ encourage experimentation, which is an important part of developing
 any machine learning system.
 
 You will need credentials in order to use R&R. These can be obtained
-after creating an account in (Bluemix)[http://bluemix.net] and
+after creating an account in (Bluemix)(http://bluemix.net) and
 creating an instance of the service in account. After these are done,
 you can click the "Service Credentials" entry in the left-hand
 navigation for that service in Bluemix to see your R&R Credentials.

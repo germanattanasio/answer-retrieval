@@ -7,7 +7,6 @@ node_modules
 venv
 .env
 *.log
-*.csv
 *.whl
 *.pyc
 .idea/*

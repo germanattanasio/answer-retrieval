@@ -26,7 +26,6 @@ import re
 from collections import defaultdict
 from collections import OrderedDict
 
-from random import random
 from random import shuffle
 
 def stripSpecial(myString):
@@ -249,7 +248,7 @@ for post in documents:
         break
     #print ('length of temp dict for id: ', post.get('id'), ' is %d ' % len(tmp_dict))
     if len(tmp_dict) > 0:
-	validdocuments.append(post)
+        validdocuments.append(post)
     else:
         filtered = filtered + 1
 
@@ -261,8 +260,8 @@ shuffle(validdocuments)
 train_documents = validdocuments[int(len(validdocuments) * (1 - SPLIT_PERCENTAGE)) +1:]
 test_documents = validdocuments[:int(len(validdocuments) * (1 - SPLIT_PERCENTAGE))]
 
-print ('length of train documents: %d ' % len(train_documents)) 
-print ('length of test documents: %d ' % len(test_documents)) 
+print ('length of train documents: %d ' % len(train_documents))
+print ('length of test documents: %d ' % len(test_documents))
 
 questions = 0
 for post in train_documents:
@@ -274,11 +273,11 @@ for post in train_documents:
     relevance_list.append(post.get('title').encode('ascii', 'ignore').decode('ascii'))
     for key, value in tmp_dict.items():
         if (relevance > 0):
-          relevance_list.append(str(key))
-          relevance_list.append(str(relevance))
-          relevance = relevance - 1
+            relevance_list.append(str(key))
+            relevance_list.append(str(relevance))
+            relevance = relevance - 1
         else:
-          break
+            break
     questions = questions + 1
     train_writer.writerow(relevance_list)
 
@@ -324,15 +323,15 @@ for item in answers:
    # add = {}
    # add['add'] = obj
    # output_str = json.dumps(add, sort_keys=True).replace('\n', '')
-   output_str = json.dumps(item, sort_keys=True).replace('\n', '')
+    output_str = json.dumps(item, sort_keys=True).replace('\n', '')
    # print output_str
    # output_str = output_str.replace('{', '', 1)
    # output_str = ''.join(output_str.rsplit('}', 1))
-   index = index + 1
-   if index <= len(answers) : 
-    f2.write(output_str +',' + '\n')
-   else:
-    f2.write(output_str + '\n')
+    index = index + 1
+    if index <= len(answers):
+        f2.write(output_str +',' + '\n')
+    else:
+        f2.write(output_str + '\n')
 
 #f2.write(' "commit" : { }\n')
 #f2.write('}')

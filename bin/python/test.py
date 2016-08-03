@@ -215,7 +215,7 @@ def main():
                 cluster_id, fl=fl)
         thread_pool = multi_pool.ThreadPool(processes=num_threads)
         question_results = thread_pool.map_async(func=thread_obj,
-                                                 iterable=[{'query': q} for (q) in relevance_dict.iteritems()]).get()
+                                                 iterable=[{'query': q} for (q,rel) in relevance_dict.iteritems()]).get()
         print ('Responses retrieved from Retrieve and Rank')
         experiment_entries = create_experiment_object(question_results, relevance_dict)
         experiment_metadata = {'ranker_id': ranker_id, 'solr_collection': collection_name, 'solr_cluster_id': cluster_id,

@@ -26,6 +26,8 @@ import re
 from collections import defaultdict
 from collections import OrderedDict
 
+from random import shuffle
+
 def stripSpecial(myString):
     myString = re.sub('/', '\\/', myString)
     myString = re.sub('<[A-Za-z\/][^>]*>', '', myString)
@@ -232,27 +234,52 @@ for key, value in qa_dict.items():
 train_writer = csv.writer(open(OUTPUT_DIR+'/answerGT_train.csv', 'wb'), delimiter=',')
 test_writer = csv.writer(open(OUTPUT_DIR+'/answerGT_test.csv', 'wb'), delimiter=',')
 
-train_documents = documents[int(len(documents) * (1 - SPLIT_PERCENTAGE)) +1:]
-test_documents = documents[:int(len(documents) * (1 - SPLIT_PERCENTAGE))]
-questions = 0
+#train_documents = documents[int(len(documents) * (1 - SPLIT_PERCENTAGE)) +1:]
+#test_documents = documents[:int(len(documents) * (1 - SPLIT_PERCENTAGE))]
 
+validdocuments = []
+print ('length of documents: %d ' % len(documents))
+
+questions = 0
+filtered = 0
+for post in documents:
+    tmp_dict = qa_dict[post.get('id')]
+    if questions > 3000:
+        break
+    #print ('length of temp dict for id: ', post.get('id'), ' is %d ' % len(tmp_dict))
+    if len(tmp_dict) > 0:
+        validdocuments.append(post)
+    else:
+        filtered = filtered + 1
+
+print ('number of original documents: %d ' % len(documents))
+print ('number of filtered documents: %d ' % filtered)
+print ('number of valid documents: %d ' % len(validdocuments))
+
+shuffle(validdocuments)
+train_documents = validdocuments[int(len(validdocuments) * (1 - SPLIT_PERCENTAGE)) +1:]
+test_documents = validdocuments[:int(len(validdocuments) * (1 - SPLIT_PERCENTAGE))]
+
+print ('length of train documents: %d ' % len(train_documents))
+print ('length of test documents: %d ' % len(test_documents))
+
+questions = 0
 for post in train_documents:
     tmp_dict = qa_dict[post.get('id')]
     if questions > 3000:
         break
-    if len(tmp_dict) > 0:
-        relevance_list = []
-        relevance = 5
-        relevance_list.append(post.get('title').encode('ascii', 'ignore').decode('ascii'))
-        for key, value in tmp_dict.items():
-            if (relevance > 0):
-                relevance_list.append(str(key))
-                relevance_list.append(str(relevance))
-                relevance = relevance - 1
-            else:
-                break
-        questions = questions + 1
-        train_writer.writerow(relevance_list)
+    relevance_list = []
+    relevance = 5
+    relevance_list.append(post.get('title').encode('ascii', 'ignore').decode('ascii'))
+    for key, value in tmp_dict.items():
+        if (relevance > 0):
+            relevance_list.append(str(key))
+            relevance_list.append(str(relevance))
+            relevance = relevance - 1
+        else:
+            break
+    questions = questions + 1
+    train_writer.writerow(relevance_list)
 
 
 for tmp in train_documents:
@@ -283,21 +310,31 @@ for tmp in test_documents:
 
 
 f2 = open(OUTPUT_DIR + '/solrDocuments.json', 'w+')
-f2.write('{')
+#f2.write('{')
+f2.write('[')
 
 addItems = defaultdict(list)
 
-
+#print len(answers)
+index = 1
 for item in answers:
-    obj = {}
-    obj['doc'] = item
-    add = {}
-    add['add'] = obj
-    output_str = json.dumps(add, sort_keys=True).replace('\n', '')
-    output_str = output_str.replace('{', '', 1)
-    output_str = ''.join(output_str.rsplit('}', 1))
-    f2.write(output_str +',' + '\n')
-f2.write(' "commit" : { }\n')
-f2.write('}')
+   # obj = {}
+   # obj['doc'] = item
+   # add = {}
+   # add['add'] = obj
+   # output_str = json.dumps(add, sort_keys=True).replace('\n', '')
+    output_str = json.dumps(item, sort_keys=True).replace('\n', '')
+   # print output_str
+   # output_str = output_str.replace('{', '', 1)
+   # output_str = ''.join(output_str.rsplit('}', 1))
+    index = index + 1
+    if index <= len(answers):
+        f2.write(output_str +',' + '\n')
+    else:
+        f2.write(output_str + '\n')
+
+#f2.write(' "commit" : { }\n')
+#f2.write('}')
+f2.write(']')
 
 print ('Content file generated.')

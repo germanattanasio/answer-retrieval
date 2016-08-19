@@ -50,12 +50,22 @@ def solr():
     result = app.pysolr_client.search(request.args.get('q'))
     return jsonify({'numFound': result.hits, 'docs': result.docs, 'start': 0})
 
+@app.route('/api/ranker', methods=['GET'])
+def default_ranker():
+    params = {'ranker_id': os.getenv('RANKER_ID'),
+              'q': request.args.get('q'),
+              'fl': os.getenv('DEFAULT_FL'), 'fq':''}
+
+    app.logger.info('default_ranker request with args=%r' % params)
+    resp = app.scorers.fcselect_default(**params)
+    return jsonify(resp)
+
 @app.route('/api/custom_ranker', methods=['GET'])
 def custom_ranker():
     """Requests to the custom ranker"""
     params = {'ranker_id': os.getenv('RANKER_ID'),
               'q': request.args.get('q'),
-              'fl': os.getenv('DEFAULT_FL'), 'fq':''}
+              'fl': os.getenv('DEFAULT_FL'), 'fq': ''}
     app.logger.info('custom_ranker request with args=%r' % params)
     resp = app.scorers.fcselect(**params)
     return jsonify(resp)

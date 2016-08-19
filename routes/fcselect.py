@@ -257,6 +257,17 @@ class FcSelect(object):
         resps['response']['docs'] = modified_docs
         return resps
 
+    def fcselect_default(self, **kwargs):
+
+        q           = self.get_query_value(kwargs, 'q')
+        search_rows = self.get_query_value(kwargs, 'rows', self.default_search_rows_)
+        fl          = self.get_query_value(kwargs, 'fl', self.default_fl_)
+        ranker_id   = self.get_query_value(kwargs,'ranker_id')
+        fcselect_params = {'q': q, 'fl': fl, 'ranker_id': ranker_id, 'wt': 'json'}
+
+        fcselect_json = self.service_fcselect(fcselect_params)
+        return fcselect_json
+
     def service_fcselect(self, params, timeout=10):
         url = '%s/v1/solr_clusters/%s/solr/%s/fcselect' % (self.service_url_,
             self.cluster_id_, self.collection_name_)

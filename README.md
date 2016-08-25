@@ -13,6 +13,11 @@ Retrieve and Rank API to support the entire process of creating such a
 system, from uploading your data to evaluating results, including
 training your answer retrieval system.
 
+# Note: 
+Only after completing the steps below defined in table of contents, you will be able to deploy the application to Bluemix using the button below:
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/answer-retrieval.git)
+
 ## Table of Contents
   - [How this app works](#how-this-app-works)
   - [Getting started](#getting-started)

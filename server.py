@@ -28,6 +28,7 @@ from routes.fcselect import FcSelect
 from requests.exceptions import HTTPError
 from dotenv import load_dotenv, find_dotenv
 import logging
+import cf_deployment_tracker
 from logging.handlers import TimedRotatingFileHandler
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
@@ -37,6 +38,8 @@ try:
 except Exception:
     print ('warning: no .env file loaded')
 
+# Emit Bluemix deployment event
+cf_deployment_tracker.track()
 
 # Application routes
 

@@ -13,6 +13,11 @@ Retrieve and Rank API to support the entire process of creating such a
 system, from uploading your data to evaluating results, including
 training your answer retrieval system.
 
+# Note: 
+Only after completing the steps defined below in table of contents, you will be able to deploy the application to Bluemix using the button below:
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/answer-retrieval.git)
+
 ## Table of Contents
   - [How this app works](#how-this-app-works)
   - [Getting started](#getting-started)
@@ -153,9 +158,12 @@ ranker.
 The **Populate the Collection** section of the **Answer Retrieval** notebook loads sample data into the Solr collection that was created by previous code blocks in that Notebook. This sample data is located in the `config` directory of the repository for this SK.
 
 ### Exploring with the UI
-**Important:** The UI will not have any rankers to display results for until you have stepped through the iPython notebooks.
+**Important:** The Sample Application UI will not have any rankers to display results for until you have stepped through the iPython notebooks.
 
-Now that you have completed the iPython notebooks, you have 2 ways to search your data: basic SOLR and a Ranker with custom scoring features. If you want to explore how all of these different rankers can perform, you just have to modify a few things in the UI. **Complete this once UI done**
+Now that you have completed the iPython notebooks, you have 2 ways to search and compare your results of your experiments: basic Solr versus default ranker and basic Solr versus a ranker with custom scoring features. If you want to explore how these different rankers perform, you just have to modify a few things in your local environment properties (.env file).
+
+- For using the UI with the default ranker, modify the SHOW_DEFAULT_RANKER property to "TRUE" and set RANKER_ID property to the default ranker id created at the end of the Answer Retrieval Notebook.
+- For using the UI with the custom ranker, modify the SHOW_DEFAULT_RANKER property to "FALSE" and set RANKER_ID property to the custom ranker id created at the end of the Custom Scorer Notebook.
 
 ## Using your own data
 If you want to train rankers with data from other StackExchange sites, you first need to [download the dumps](https://archive.org/download/stackexchange). Once you have chosen a dump, you can use `bin/python/extract_stackexchange_dump.py` to convert it into a R&R-compatible format. If you wish to use another data source, consult the [Retrieve and Rank documentationn](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/retrieve-rank/), which explains how R&R expects incoming data to be formatted.
@@ -238,11 +246,18 @@ For comparison, the `config/features.json` contains a single Document scorer, in
     ```sh
     python server.py
     ```
+<<<<<<< HEAD
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/answer-retrieval.git)
 
 ## Privacy Notice
 
 Sample applications that include this package(cf_deployment_tracker) may be configured to track deployments to [IBM Bluemix](https://www.bluemix.net/) and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
+=======
+
+## Privacy Notice
+
+Sample web applications that include the cf_deployment_tracker package included here may be configured to track deployments to [IBM Bluemix](https://www.bluemix.net/) and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
+>>>>>>> watson-developer-cloud/master
 
 * Python package version
 * Python repository URL
@@ -253,4 +268,8 @@ Sample applications that include this package(cf_deployment_tracker) may be conf
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
+<<<<<<< HEAD
 This data is collected from the `server.py` file in the sample application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of applications to IBM Bluemix to measure the usefulness of our starter kits, so that we can continuously improve the content we offer to you. Only deployments of applications that include code to ping the Deployment Tracker service will be tracked.
+=======
+This data is collected from the `server.py` file in the sample application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
+>>>>>>> watson-developer-cloud/master

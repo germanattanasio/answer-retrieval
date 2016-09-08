@@ -31,6 +31,7 @@ import logging
 import cf_deployment_tracker
 from logging.handlers import TimedRotatingFileHandler
 from flask import Flask, render_template, request, jsonify
+
 app = Flask(__name__)
 
 try:
@@ -53,8 +54,25 @@ def solr():
     result = app.pysolr_client.search(request.args.get('q'))
     return jsonify({'numFound': result.hits, 'docs': result.docs, 'start': 0})
 
+@app.route('/api/ranker_select', methods=['GET'])
+def ranker_select():
+    """Requests to the custom  or default based on environment property """
+    custom_ranker = os.getenv("SHOW_DEFAULT_RANKER")
+    params = {'ranker_id': os.getenv('RANKER_ID'),
+              'q': request.args.get('q'),
+              'fl': os.getenv('DEFAULT_FL'), 'fq': ''}
+    resp = ""
+    if custom_ranker == 'TRUE':
+        app.logger.info('default_ranker request with args=%r' % params)
+        resp = app.scorers.fcselect_default(**params)
+    else:
+        app.logger.info('custom_ranker request with args=%r' % params)
+        resp = app.scorers.fcselect(**params)
+    return jsonify(resp)
+
 @app.route('/api/ranker', methods=['GET'])
 def default_ranker():
+    """Requests to the default ranker"""
     params = {'ranker_id': os.getenv('RANKER_ID'),
               'q': request.args.get('q'),
               'fl': os.getenv('DEFAULT_FL'), 'fq':''}
@@ -110,6 +128,7 @@ if __name__ == "__main__":
     # Get host/port from the Bluemix environment, or default to local
     HOST_NAME = os.getenv('VCAP_APP_HOST', '127.0.0.1')
     PORT_NUMBER = int(os.getenv('VCAP_APP_PORT', '3000'))
+    SHOW_DEFAULT_RANKER = os.getenv('SHOW_DEFAULT_RANKER')
 
     # disable file logging
     #setup_file_logger()
@@ -131,5 +150,6 @@ if __name__ == "__main__":
     app.pysolr_client = retrieve_and_rank.get_pysolr_client(cluster_id, collection_name)
 
     # Start the server
-    app.run(host=HOST_NAME, port=PORT_NUMBER, debug=True)
+    print('Starting with SHOW_DEFAULT_RANKER set to %s on port: %d on host : %s' % (SHOW_DEFAULT_RANKER, PORT_NUMBER, HOST_NAME))
+    app.run(host=HOST_NAME, port=PORT_NUMBER, debug=False)
     print ('Listening on %s:%d' % (HOST_NAME, PORT_NUMBER))

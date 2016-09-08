@@ -23,7 +23,7 @@
   };
 
   app.WatsonModel.prototype.retrieve_and_rank_custom_ranker = function (query, deferred) {
-    var retrieve_and_rank_custom_ranker = this._sendRequest('/api/custom_ranker', { q: query });
+    var retrieve_and_rank_custom_ranker = this._sendRequest('/api/ranker_select', { q: query });
     return new Promise(function () {
       retrieve_and_rank_custom_ranker.then(function (response) {
         deferred.resolve(response.response);

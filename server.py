@@ -32,16 +32,15 @@ import cf_deployment_tracker
 from logging.handlers import TimedRotatingFileHandler
 from flask import Flask, render_template, request, jsonify
 
-
-# Emit Bluemix deployment event
-cf_deployment_tracker.track()
-
 app = Flask(__name__)
 
 try:
     load_dotenv(find_dotenv())
 except Exception:
     print ('warning: no .env file loaded')
+
+# Emit Bluemix deployment event
+cf_deployment_tracker.track()
 
 # Application routes
 

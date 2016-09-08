@@ -246,18 +246,11 @@ For comparison, the `config/features.json` contains a single Document scorer, in
     ```sh
     python server.py
     ```
-<<<<<<< HEAD
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/answer-retrieval.git)
 
 ## Privacy Notice
 
-Sample applications that include this package(cf_deployment_tracker) may be configured to track deployments to [IBM Bluemix](https://www.bluemix.net/) and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
-=======
-
-## Privacy Notice
-
 Sample web applications that include the cf_deployment_tracker package included here may be configured to track deployments to [IBM Bluemix](https://www.bluemix.net/) and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
->>>>>>> watson-developer-cloud/master
 
 * Python package version
 * Python repository URL
@@ -268,8 +261,4 @@ Sample web applications that include the cf_deployment_tracker package included 
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-<<<<<<< HEAD
-This data is collected from the `server.py` file in the sample application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of applications to IBM Bluemix to measure the usefulness of our starter kits, so that we can continuously improve the content we offer to you. Only deployments of applications that include code to ping the Deployment Tracker service will be tracked.
-=======
 This data is collected from the `server.py` file in the sample application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
->>>>>>> watson-developer-cloud/master

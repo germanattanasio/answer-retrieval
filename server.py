@@ -126,8 +126,8 @@ def setup_file_logger():
 
 if __name__ == "__main__":
     # Get host/port from the Bluemix environment, or default to local
-    HOST_NAME = os.getenv('VCAP_APP_HOST', '127.0.0.1')
-    PORT_NUMBER = int(os.getenv('VCAP_APP_PORT', '3000'))
+    HOST_NAME = '0.0.0.0'
+    PORT_NUMBER = int(os.getenv('PORT', '3000'))
     SHOW_DEFAULT_RANKER = os.getenv('SHOW_DEFAULT_RANKER')
 
     # disable file logging

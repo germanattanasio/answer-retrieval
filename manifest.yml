@@ -1,5 +1,5 @@
 declared-services:
-  retrieve-and-rank-service:
+  retrieve-and-rank-skit:
     label: retrieve_and_rank
     plan: standard
 applications:
@@ -8,4 +8,4 @@ applications:
   path: .
   memory: 512M
   services:
-  - retrieve-and-rank-service
+  - retrieve-and-rank-skit
